@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manju — Assistant Professor | Computer Science</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0f2044;
+  --blue:    #1a5caa;
+  --sky:     #2d8bdb;
+  --ice:     #e8f2fc;
+  --white:   #ffffff;
+  --slate:   #64748b;
+  --silver:  #f1f5f9;
+  --border:  #dde6f0;
+  --text:    #1e293b;
+  --gold:    #e6a817;
+  --radius:  12px;
+  --shadow:  0 4px 24px rgba(15,32,68,0.10);
+  --shadow-lg: 0 12px 48px rgba(15,32,68,0.14);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left  { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+.reveal-right { opacity: 0; transform: translateX(32px);  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+.reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+.d5 { transition-delay: 0.40s; }
+.d6 { transition-delay: 0.48s; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(--shadow); }
+
+.nav-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem; color: var(--navy);
+  text-decoration: none; letter-spacing: 0.01em;
+}
+.nav-brand span { color: var(--sky); }
+
+.nav-links { display: flex; gap: 0.25rem; list-style: none; }
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em;
+  color: var(--slate); text-decoration: none;
+  padding: 0.4em 0.9em; border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--blue); background: var(--ice); }
+.nav-links a.active { color: var(--blue); background: var(--ice); }
+
+.nav-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; font-weight: 500;
+  background: linear-gradient(135deg, var(--blue), var(--sky));
+  color: #fff; padding: 0.3em 0.9em; border-radius: 20px;
+  letter-spacing: 0.06em;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(145deg, var(--navy) 0%, #173a6e 55%, #1e5498 100%);
+  display: flex; align-items: center;
+  padding: 100px 5vw 60px;
+  position: relative; overflow: hidden;
+}
+
+/* Animated geometric background */
+.hero-bg-shapes {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.hero-bg-shapes .shape {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+  animation: floatShape 12s ease-in-out infinite;
+}
+.shape.s1 { width: 500px; height: 500px; top: -150px; right: -100px; animation-delay: 0s; }
+.shape.s2 { width: 300px; height: 300px; bottom: -80px; left: -60px; animation-delay: -4s; }
+.shape.s3 { width: 180px; height: 180px; top: 40%; right: 20%; animation-delay: -8s; border-color: rgba(45,139,219,0.15); }
+.shape.s4 {
+  width: 700px; height: 700px;
+  top: -200px; right: -200px;
+  background: radial-gradient(circle, rgba(45,139,219,0.08) 0%, transparent 70%);
+  border: none;
+  animation: pulse 8s ease-in-out infinite;
+}
+@keyframes floatShape {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-20px) rotate(5deg); }
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 0.5; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+
+/* Grid lines */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 4rem; align-items: center; width: 100%;
+}
+
+.hero-text { }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  opacity: 0; animation: fadeUp 0.7s 0.3s both;
+}
+.hero-tag::before {
+  content: ''; display: block;
+  width: 28px; height: 1px; background: var(--sky);
+}
+
+.hero-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  line-height: 1.05; color: var(--white);
+  margin-bottom: 0.6rem;
+  opacity: 0; animation: fadeUp 0.8s 0.5s both;
+}
+.hero-name em {
+  font-style: italic; color: #7ec8f8;
+}
+
+.hero-title {
+  font-size: 1.1rem; font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 1.6rem; letter-spacing: 0.01em;
+  opacity: 0; animation: fadeUp 0.8s 0.7s both;
+}
+
+.hero-intro {
+  font-size: 1rem; line-height: 1.8; font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  max-width: 560px; margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.85s both;
+}
+
+.hero-chips {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.8s 1s both;
+}
+.chip {
+  font-size: 0.78rem; font-weight: 500;
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.16);
+  padding: 0.35em 1em; border-radius: 20px;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, border-color 0.2s;
+}
+.chip:hover { background: rgba(45,139,219,0.25); border-color: var(--sky); }
+
+.hero-actions {
+  display: flex; gap: 1rem;
+  opacity: 0; animation: fadeUp 0.8s 1.15s both;
+}
+.btn {
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+  padding: 0.75em 1.8em; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.btn-primary { background: var(--white); color: var(--navy); }
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* Avatar */
+.hero-avatar-wrap {
+  flex-shrink: 0;
+  opacity: 0; animation: fadeScale 0.9s 0.6s both;
+}
+.hero-avatar {
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sky) 0%, #7ec8f8 50%, var(--gold) 100%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 8px rgba(255,255,255,0.08), 0 0 0 16px rgba(255,255,255,0.04);
+  position: relative;
+  animation: avatarGlow 4s ease-in-out infinite;
+}
+@keyframes avatarGlow {
+  0%,100% { box-shadow: 0 0 0 8px rgba(255,255,255,0.08), 0 0 0 16px rgba(255,255,255,0.04); }
+  50% { box-shadow: 0 0 0 12px rgba(45,139,219,0.15), 0 0 0 24px rgba(45,139,219,0.07); }
+}
+.avatar-initials {
+  font-family: 'DM Serif Display', serif;
+  font-size: 4rem; color: var(--white);
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.avatar-badge {
+  position: absolute; bottom: 10px; right: 10px;
+  background: var(--gold); color: var(--navy);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; font-weight: 500;
+  padding: 0.3em 0.7em; border-radius: 20px;
+  letter-spacing: 0.1em; white-space: nowrap;
+}
+
+/* Stats bar */
+.hero-stats {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; justify-content: center;
+  opacity: 0; animation: fadeUp 0.8s 1.3s both;
+}
+.stats-inner {
+  display: flex; gap: 0;
+  max-width: 900px; width: 100%;
+}
+.stat-item {
+  flex: 1; padding: 1.2rem 2rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.9rem; color: var(--white); line-height: 1;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+@keyframes fadeUp   { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:none; } }
+@keyframes fadeScale { from { opacity:0; transform: scale(0.85); } to { opacity:1; transform:none; } }
+
+/* ─── SECTION BASE ─── */
+section { padding: 90px 5vw; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sky); margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.section-label::after {
+  content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--sky);
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  line-height: 1.2; color: var(--navy);
+  margin-bottom: 3rem;
+}
+.section-title em { font-style: italic; color: var(--sky); }
+
+/* ─── ABOUT ─── */
+#about { background: var(--silver); }
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start;
+}
+
+.about-text p {
+  font-size: 1rem; line-height: 1.85; color: var(--slate);
+  margin-bottom: 1.2rem; font-weight: 300;
+}
+.about-text strong { color: var(--navy); font-weight: 600; }
+
+.about-highlights {
+  display: flex; flex-direction: column; gap: 1rem;
+  margin-top: 2rem;
+}
+.highlight-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--white); border-radius: var(--radius);
+  border-left: 3px solid var(--sky);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.highlight-item:hover { transform: translateX(4px); box-shadow: var(--shadow-lg); }
+.hi-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: var(--ice); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.hi-text strong {
+  display: block; font-size: 0.88rem; font-weight: 600; color: var(--navy);
+  margin-bottom: 0.2rem;
+}
+.hi-text span { font-size: 0.82rem; color: var(--slate); }
+
+/* ─── EDUCATION ─── */
+#education { background: var(--white); }
+
+.edu-timeline {
+  position: relative; padding-left: 2rem;
+}
+.edu-timeline::before {
+  content: ''; position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--sky), var(--border));
+}
+
+.edu-item {
+  position: relative; margin-bottom: 2.5rem;
+  padding: 1.8rem 2rem;
+  background: var(--silver); border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.edu-item:hover { box-shadow: var(--shadow-lg); transform: translateX(4px); }
+.edu-item::before {
+  content: ''; position: absolute;
+  left: -2.5rem; top: 1.8rem;
+  width: 12px; height: 12px;
+  background: var(--sky); border-radius: 50%;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--sky);
+}
+
+.edu-degree {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem; color: var(--navy); margin-bottom: 0.3rem;
+}
+.edu-college {
+  font-size: 0.92rem; color: var(--blue); font-weight: 500; margin-bottom: 0.2rem;
+}
+.edu-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; color: var(--slate);
+  letter-spacing: 0.1em; margin-bottom: 0.8rem;
+}
+.edu-detail {
+  font-size: 0.88rem; color: var(--slate); line-height: 1.6;
+}
+
+/* ─── EXPERIENCE ─── */
+#experience { background: linear-gradient(180deg, var(--navy) 0%, #173a6e 100%); }
+#experience .section-label { color: #7ec8f8; }
+#experience .section-label::after { background: #7ec8f8; }
+#experience .section-title { color: var(--white); }
+#experience .section-title em { color: #7ec8f8; }
+
+.exp-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px; padding: 2.5rem;
+  backdrop-filter: blur(8px);
+  margin-bottom: 2rem;
+}
+
+.exp-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1.5rem; gap: 1rem;
+}
+.exp-role {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem; color: var(--white); margin-bottom: 0.25rem;
+}
+.exp-org { font-size: 0.95rem; color: var(--sky); font-weight: 500; }
+.exp-badge {
+  flex-shrink: 0;
+  background: rgba(45,139,219,0.25);
+  border: 1px solid rgba(45,139,219,0.4);
+  color: #7ec8f8;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  padding: 0.4em 1em; border-radius: 20px; white-space: nowrap;
+}
+
+.exp-duties {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;
+  list-style: none;
+}
+.exp-duties li {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 0.9rem; color: rgba(255,255,255,0.72); line-height: 1.6;
+}
+.duty-dot {
+  width: 6px; height: 6px; flex-shrink: 0;
+  background: var(--sky); border-radius: 50%; margin-top: 0.55rem;
+}
+
+/* ─── SKILLS ─── */
+#skills { background: var(--white); }
+
+.skills-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+}
+
+.skill-card {
+  padding: 1.8rem;
+  background: var(--silver);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+  cursor: default;
+}
+.skill-card:hover {
+  background: var(--ice); border-color: var(--sky);
+  box-shadow: var(--shadow); transform: translateY(-4px);
+}
+.skill-icon {
+  font-size: 1.8rem; margin-bottom: 1rem;
+  display: block;
+}
+.skill-name {
+  font-weight: 600; font-size: 0.9rem; color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.skill-level {
+  height: 4px; background: var(--border); border-radius: 2px;
+  overflow: hidden; margin-top: 0.8rem;
+}
+.skill-fill {
+  height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--sky));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1s cubic-bezier(.22,1,.36,1);
+}
+.skill-card.visible .skill-fill { transform: scaleX(1); }
+
+/* ─── PROJECTS ─── */
+#projects { background: var(--silver); }
+
+.projects-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 2.5rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--sky));
+}
+.project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+
+.project-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.2em;
+  color: var(--sky); margin-bottom: 1rem;
+}
+.project-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem; color: var(--navy); margin-bottom: 0.8rem;
+}
+.project-desc {
+  font-size: 0.92rem; color: var(--slate); line-height: 1.7;
+  margin-bottom: 1.5rem; font-weight: 300;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.p-tag {
+  font-size: 0.72rem; font-weight: 500;
+  background: var(--ice); color: var(--blue);
+  border: 1px solid var(--border);
+  padding: 0.3em 0.8em; border-radius: 6px;
+}
+
+/* ─── ACHIEVEMENTS ─── */
+#achievements { background: var(--white); }
+
+.ach-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+
+.ach-card {
+  display: flex; align-items: flex-start; gap: 1.5rem;
+  padding: 2rem;
+  background: var(--silver); border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.ach-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.ach-icon-wrap {
+  width: 52px; height: 52px; flex-shrink: 0;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.ach-icon-wrap.gold { background: #fff8e6; }
+.ach-icon-wrap.blue { background: var(--ice); }
+.ach-title {
+  font-weight: 600; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.35rem;
+}
+.ach-desc { font-size: 0.85rem; color: var(--slate); line-height: 1.6; }
+
+/* ─── PHILOSOPHY ─── */
+#philosophy {
+  background: linear-gradient(135deg, var(--ice) 0%, #dbeeff 100%);
+}
+
+.philosophy-content {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+
+.philosophy-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  line-height: 1.5; color: var(--navy);
+  font-style: italic; position: relative;
+  padding-left: 2rem;
+}
+.philosophy-quote::before {
+  content: '"';
+  position: absolute; left: 0; top: -0.3rem;
+  font-size: 4rem; color: var(--sky); line-height: 1;
+  font-style: normal;
+}
+
+.philosophy-pillars {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.pillar {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
+}
+.pillar:hover { transform: translateX(6px); }
+.pillar-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), var(--sky));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: 1.1rem;
+}
+.pillar-text { font-weight: 500; font-size: 0.92rem; color: var(--navy); }
+.pillar-sub  { font-size: 0.8rem; color: var(--slate); margin-top: 0.1rem; }
+
+/* ─── CONTACT ─── */
+#contact { background: var(--navy); }
+#contact .section-label { color: #7ec8f8; }
+#contact .section-label::after { background: #7ec8f8; }
+#contact .section-title { color: var(--white); }
+#contact .section-title em { color: #7ec8f8; }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+
+.contact-intro {
+  font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.65);
+  font-weight: 300; margin-bottom: 2.5rem;
+}
+
+.contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 1.2rem;
+}
+.c-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.2s;
+}
+.contact-item:hover .c-icon { background: rgba(45,139,219,0.25); }
+.c-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 0.15rem;
+}
+.c-value {
+  font-size: 0.95rem; color: var(--white); font-weight: 400;
+}
+
+.contact-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px; padding: 2.5rem;
+}
+.cc-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem; color: var(--white); margin-bottom: 1.5rem;
+}
+.cc-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.cc-list li {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-size: 0.9rem; color: rgba(255,255,255,0.7);
+}
+.cc-list li::before {
+  content: '→'; color: var(--sky); font-weight: 600;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #090f1f;
+  padding: 1.8rem 5vw;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+
+/* ─── DECORATIVE DIVIDER ─── */
+.wave-divider {
+  height: 60px; overflow: hidden;
+  background: var(--white);
+}
+.wave-divider svg { display: block; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .hero-inner       { grid-template-columns: 1fr; }
+  .hero-avatar-wrap { display: none; }
+  .about-grid, .contact-grid, .philosophy-content { grid-template-columns: 1fr; gap: 3rem; }
+  .skills-grid      { grid-template-columns: 1fr 1fr; }
+  .projects-grid, .ach-grid { grid-template-columns: 1fr; }
+  .exp-duties       { grid-template-columns: 1fr; }
+  .nav-links        { display: none; }
+  .stats-inner      { flex-wrap: wrap; }
+  .stat-item        { min-width: 50%; }
+}
+@media (max-width: 560px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── PRINT / PDF ─── */
+@media print {
+  nav, .hero-bg-shapes, .hero-grid, #canvas-bg { display: none !important; }
+  body { font-size: 11pt; }
+  section { padding: 30px 20px; break-inside: avoid; }
+  .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-brand">Manju<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="nav-badge">UGC-NET Qualified</span>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+    <div class="shape s4"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-tag">Assistant Professor · Computer Science</p>
+      <h1 class="hero-name">Manju<br><em>Educator. Mentor. Innovator.</em></h1>
+      <p class="hero-title">Ganga Institute of Technology &amp; Management, Jhajjar</p>
+      <p class="hero-intro">
+        A passionate and driven Computer Science educator dedicated to bridging theory with practice — shaping technically strong, analytically capable, and professionally ready graduates through interactive, student-centred pedagogy.
+      </p>
+      <div class="hero-chips">
+        <span class="chip">🖥️ Programming Fundamentals</span>
+        <span class="chip">🗄️ DBMS</span>
+        <span class="chip">🌐 Web Technologies</span>
+        <span class="chip">🌲 Data Structures</span>
+        <span class="chip">📋 Curriculum Design</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">📬 Get In Touch</a>
+        <a href="#research" class="btn btn-outline">Explore Portfolio ↓</a>
+      </div>
+    </div>
+    <div class="hero-avatar-wrap">
+      <div class="hero-avatar">
+        <span class="avatar-initials">M</span>
+        <span class="avatar-badge">NET QUALIFIED</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">MCA</div>
+        <div class="stat-label">Highest Degree</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">UGC</div>
+        <div class="stat-label">NET Qualified</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Core Subjects Taught</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Academic Projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label reveal">About Me</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title reveal">Passionate about <em>teaching</em> &amp; shaping tomorrow's technologists.</h2>
+        <div class="about-text reveal d1">
+          <p>
+            I am an <strong>enthusiastic and dedicated Assistant Professor</strong> in the Department of Computer Science with a strong foundation in both theoretical principles and practical application. My academic journey — from BCA to MCA — has instilled in me a deep appreciation for structured learning, problem-solving, and continuous growth.
+          </p>
+          <p>
+            Having cleared the <strong>UGC-NET in Computer Science and Applications</strong>, I bring a research-oriented perspective to the classroom. I believe education is most powerful when it is interactive, contextual, and student-centred — transforming passive learners into confident, critical thinkers.
+          </p>
+          <p>
+            My teaching spans <strong>Programming, Data Structures, DBMS, and Web Technologies</strong>, and I consistently strive to connect academic concepts with real-world applications that inspire curiosity and competence.
+          </p>
+        </div>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item reveal reveal-delay-1 d1">
+          <div class="hi-icon">🎓</div>
+          <div class="hi-text">
+            <strong>UGC-NET Qualified</strong>
+            <span>Computer Science &amp; Applications — nationally recognised academic credential</span>
+          </div>
+        </div>
+        <div class="highlight-item reveal d2">
+          <div class="hi-icon">💡</div>
+          <div class="hi-text">
+            <strong>Student-Centred Teaching</strong>
+            <span>Interactive lectures, practical lab sessions, and personalised mentoring</span>
+          </div>
+        </div>
+        <div class="highlight-item reveal d3">
+          <div class="hi-icon">📐</div>
+          <div class="hi-text">
+            <strong>Curriculum Developer</strong>
+            <span>Designing course materials aligned with industry relevance and academic rigour</span>
+          </div>
+        </div>
+        <div class="highlight-item reveal d4">
+          <div class="hi-icon">🏆</div>
+          <div class="hi-text">
+            <strong>Award-Winning Academic</strong>
+            <span>1st Position — Inter-College Technology Day Competition</span>
+          </div>
+        </div>
+        <div class="highlight-item reveal d5">
+          <div class="hi-icon">🤝</div>
+          <div class="hi-text">
+            <strong>Project Mentor</strong>
+            <span>Guiding students from ideation to full project delivery with practical focus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EDUCATION ══════════ -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-label reveal">Education</p>
+    <h2 class="section-title reveal">Academic <em>Background</em></h2>
+    <div class="edu-timeline">
+
+      <div class="edu-item reveal d1">
+        <div class="edu-degree">Master of Computer Applications (MCA)</div>
+        <div class="edu-college">MDU, Rohtak / Affiliated Institution, Haryana</div>
+        <div class="edu-year">2023 – 2025</div>
+        <div class="edu-detail">Specialisation in advanced computing, software engineering, database systems, and intelligent applications. Qualified UGC-NET during this tenure.</div>
+      </div>
+
+      <div class="edu-item reveal d2">
+        <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-college">All India Jat Heroes' Memorial College, Rohtak</div>
+        <div class="edu-year">2020 – 2023</div>
+        <div class="edu-detail">Strong foundation in programming fundamentals, data structures, operating systems, DBMS, and web development technologies. Demonstrated consistent academic excellence.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label reveal">Experience</p>
+    <h2 class="section-title reveal">Teaching <em>Experience</em></h2>
+    <div class="exp-card reveal d1">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Assistant Professor</div>
+          <div class="exp-org">Ganga Institute of Technology &amp; Management — Jhajjar, Haryana</div>
+        </div>
+        <div class="exp-badge">CURRENT ROLE</div>
+      </div>
+      <ul class="exp-duties">
+        <li><span class="duty-dot"></span>Delivering engaging theory lectures and hands-on laboratory sessions across core Computer Science subjects</li>
+        <li><span class="duty-dot"></span>Designing comprehensive course materials, lesson plans, and continuous assessment frameworks</li>
+        <li><span class="duty-dot"></span>Mentoring undergraduate students on academic projects from initial concept to final presentation</li>
+        <li><span class="duty-dot"></span>Evaluating student performance through assignments, practicals, and semester examinations</li>
+        <li><span class="duty-dot"></span>Maintaining accurate academic records, attendance registers, and progress reports</li>
+        <li><span class="duty-dot"></span>Fostering a collaborative and inclusive classroom environment that encourages curiosity and critical thinking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label reveal">Skills</p>
+    <h2 class="section-title reveal">Core <em>Competencies</em></h2>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal d1">
+        <span class="skill-icon">🖥️</span>
+        <div class="skill-name">Programming Fundamentals</div>
+        <div class="skill-level"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d2">
+        <span class="skill-icon">🌲</span>
+        <div class="skill-name">Data Structures &amp; Algorithms</div>
+        <div class="skill-level"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d3">
+        <span class="skill-icon">🗄️</span>
+        <div class="skill-name">Database Management Systems</div>
+        <div class="skill-level"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d4">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-name">Web Technologies</div>
+        <div class="skill-level"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d5">
+        <span class="skill-icon">📋</span>
+        <div class="skill-name">Curriculum Development</div>
+        <div class="skill-level"><div class="skill-fill" style="width:87%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d6">
+        <span class="skill-icon">🎤</span>
+        <div class="skill-name">Teaching &amp; Presentation</div>
+        <div class="skill-level"><div class="skill-fill" style="width:94%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d1">
+        <span class="skill-icon">🧑‍🏫</span>
+        <div class="skill-name">Classroom Management</div>
+        <div class="skill-level"><div class="skill-fill" style="width:91%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d2">
+        <span class="skill-icon">💬</span>
+        <div class="skill-name">Communication &amp; Collaboration</div>
+        <div class="skill-level"><div class="skill-fill" style="width:93%"></div></div>
+      </div>
+
+      <div class="skill-card reveal d3">
+        <span class="skill-icon">📊</span>
+        <div class="skill-name">MS Office Suite</div>
+        <div class="skill-level"><div class="skill-fill" style="width:89%"></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROJECTS ══════════ -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label reveal">Projects</p>
+    <h2 class="section-title reveal">Academic <em>Projects</em></h2>
+    <div class="projects-grid">
+
+      <div class="project-card reveal d1">
+        <div class="project-num">01 / PROJECT</div>
+        <div class="project-name">Hotel Management System</div>
+        <p class="project-desc">
+          A comprehensive desktop application designed to manage hotel operations including room booking, guest management, billing, and administrative reporting. Implemented with a strong focus on modular programming principles and structured data handling.
+        </p>
+        <div class="project-tags">
+          <span class="p-tag">Modular Programming</span>
+          <span class="p-tag">Data Handling</span>
+          <span class="p-tag">Database Design</span>
+          <span class="p-tag">UI/UX</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal d2">
+        <div class="project-num">02 / PROJECT</div>
+        <div class="project-name">E-Commerce Platform</div>
+        <p class="project-desc">
+          A full-featured e-commerce web application encompassing product listings, shopping cart functionality, user authentication, order processing workflows, and a structured backend. Designed with emphasis on clean UI and efficient structured programming patterns.
+        </p>
+        <div class="project-tags">
+          <span class="p-tag">Web Technologies</span>
+          <span class="p-tag">Structured Programming</span>
+          <span class="p-tag">Workflow Design</span>
+          <span class="p-tag">UI Design</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ACHIEVEMENTS ══════════ -->
+<section id="achievements">
+  <div class="section-inner">
+    <p class="section-label reveal">Achievements</p>
+    <h2 class="section-title reveal">Awards &amp; <em>Recognition</em></h2>
+    <div class="ach-grid">
+
+      <div class="ach-card reveal d1">
+        <div class="ach-icon-wrap gold">🏅</div>
+        <div>
+          <div class="ach-title">UGC-NET Qualified</div>
+          <p class="ach-desc">Cleared the National Eligibility Test in Computer Science and Applications — a nationally recognised qualification demonstrating research aptitude and subject mastery.</p>
+        </div>
+      </div>
+
+      <div class="ach-card reveal d2">
+        <div class="ach-icon-wrap blue">🥇</div>
+        <div>
+          <div class="ach-title">1st Position — Inter-College Technology Day</div>
+          <p class="ach-desc">Secured first position in the Inter-College Technology Day Competition, demonstrating technical excellence, innovative thinking, and effective academic communication.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PHILOSOPHY ══════════ -->
+<section id="philosophy">
+  <div class="section-inner">
+    <p class="section-label reveal">Teaching Philosophy</p>
+    <h2 class="section-title reveal">The Principles Behind <em>My Pedagogy</em></h2>
+    <div class="philosophy-content">
+
+      <blockquote class="philosophy-quote reveal reveal-left">
+        Education is not the filling of a bucket, but the lighting of a fire. I strive to create classrooms where curiosity thrives, concepts come alive, and every student leaves more capable than when they arrived.
+      </blockquote>
+
+      <div class="philosophy-pillars reveal reveal-right">
+        <div class="pillar">
+          <div class="pillar-icon">💡</div>
+          <div>
+            <div class="pillar-text">Interactive Learning</div>
+            <div class="pillar-sub">Discussions, problem-solving, and collaborative exercises over passive lectures</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔬</div>
+          <div>
+            <div class="pillar-text">Practical Exposure</div>
+            <div class="pillar-sub">Real-world applications and hands-on lab sessions reinforce every concept</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🧑‍🤝‍🧑</div>
+          <div>
+            <div class="pillar-text">Student-Centred Approach</div>
+            <div class="pillar-sub">Individualised mentoring tailored to each student's pace and potential</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📈</div>
+          <div>
+            <div class="pillar-text">Continuous Growth</div>
+            <div class="pillar-sub">Curriculum that evolves with industry trends and student feedback</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label reveal">Contact</p>
+    <h2 class="section-title reveal">Let's <em>Connect</em></h2>
+    <div class="contact-grid">
+
+      <div>
+        <p class="contact-intro reveal">
+          Whether you're a prospective student, a fellow educator, or an institutional collaborator — I welcome open dialogue. Feel free to reach out for academic discussions, project mentoring, or professional inquiries.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item reveal d1">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label">Phone</div>
+              <div class="c-value">Available on request</div>
+            </div>
+          </div>
+          <div class="contact-item reveal d2">
+            <div class="c-icon">📧</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-value">manju@gitm.edu.in</div>
+            </div>
+          </div>
+          <div class="contact-item reveal d3">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Location</div>
+              <div class="c-value">Sonipat, Haryana, India</div>
+            </div>
+          </div>
+          <div class="contact-item reveal d4">
+            <div class="c-icon">🏫</div>
+            <div>
+              <div class="c-label">Institution</div>
+              <div class="c-value">GITM, Jhajjar, Haryana</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card reveal reveal-right">
+        <div class="cc-title">Open To</div>
+        <ul class="cc-list">
+          <li>Academic collaborations and joint curriculum projects</li>
+          <li>Student project mentoring and guidance</li>
+          <li>Guest lectures and seminars</li>
+          <li>Research discussions in CS education</li>
+          <li>Professional networking with educators</li>
+          <li>Workshop facilitation and training sessions</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Manju — Assistant Professor, Computer Science</p>
+  <p>GITM Jhajjar · UGC-NET Qualified · Sonipat, Haryana</p>
+</footer>
+
+<script>
+// ─── NAV SCROLL ───
+const nav = document.getElementById('main-nav');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// ─── SCROLL REVEAL ───
+const allReveal = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+allReveal.forEach(el => revealObs.observe(el));
+
+// ─── SKILL BAR ANIMATION ───
+const skillObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      skillObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-card').forEach(el => skillObs.observe(el));
+
+// ─── ACTIVE NAV ───
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+
+// ─── TYPED HERO SUBTITLE ───
+const phrases = [
+  'Programming Fundamentals',
+  'Data Structures',
+  'Database Management',
+  'Web Technologies',
+  'Student Mentoring'
+];
+let pi = 0, ci = 0, deleting = false;
+const el = document.querySelector('.hero-title');
+if (el) {
+  const base = 'Ganga Institute of Technology &amp; Management, Jhajjar';
+  function type() {
+    // subtle: just animate the tagline chip area instead
+  }
+}
+</script>
+</body>
+</html>
