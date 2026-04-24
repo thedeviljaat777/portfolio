@@ -1,0 +1,472 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body,html{background:#050d1a;color:#e8eaf2;font-family:'DM Sans',sans-serif;scroll-behavior:smooth}
+:root{--blue:#4fa3e8;--blue-dark:#2563a8;--purple:#7c6fd4;--gold:#e8b84b;--red:#e05555}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;position:sticky;top:0;z-index:100;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid rgba(100,160,240,0.08)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a3a6e,#2563a8);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#7ec8f4;border:1.5px solid rgba(100,180,255,0.25)}
+.nav-brand{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#fff}.nav-brand span{color:#4fa3e8}
+.nav-links{display:flex;gap:0;list-style:none}.nav-links a{color:rgba(200,215,235,0.65);text-decoration:none;font-size:13.5px;padding:7px 16px;border-radius:30px;transition:all 0.2s}.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(79,163,232,0.12)}
+.hire-btn{background:#2563a8;color:#e8f4ff;border:none;padding:9px 22px;border-radius:40px;font-size:14px;font-weight:500;cursor:pointer;transition:background 0.2s}.hire-btn:hover{background:#1a4e8a}
+
+/* STARS */
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;animation:twinkle 4s infinite alternate}
+@keyframes twinkle{0%{opacity:0.1}100%{opacity:0.85}}
+
+/* SECTIONS */
+section{position:relative;z-index:5;padding:90px 48px}
+.sec-label{font-size:11px;font-weight:500;letter-spacing:2.5px;color:#4fa3e8;text-transform:uppercase;margin-bottom:8px;text-align:center}
+.sec-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:#e8eaf2;text-align:center;margin-bottom:6px}
+.sec-title span{color:#4fa3e8}
+.sec-divider{width:50px;height:3px;background:linear-gradient(90deg,#2563a8,#7c6fd4);border-radius:4px;margin:14px auto 16px}
+.sec-sub{text-align:center;color:rgba(160,185,215,0.7);font-size:15px;max-width:540px;margin:0 auto 52px;line-height:1.7}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr auto;align-items:center;padding:70px 48px 40px;gap:40px}
+.hero-greeting{font-size:17px;color:rgba(200,215,235,0.75);margin-bottom:8px}.hero-greeting strong{color:#e8eaf2;font-weight:500}
+.hero-h1{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;line-height:1;color:#4fa3e8;margin:0 0 12px;letter-spacing:-1px}
+.hero-sub{font-size:17px;color:rgba(160,180,210,0.8);margin:0 0 34px;max-width:500px;line-height:1.65}
+.terminal{background:#0d1f35;border-radius:12px;border:0.5px solid rgba(100,160,240,0.18);max-width:540px;overflow:hidden;margin-bottom:40px}
+.t-bar{background:#111e30;padding:9px 14px;display:flex;align-items:center;gap:6px;border-bottom:0.5px solid rgba(100,160,240,0.12)}
+.dot{width:10px;height:10px;border-radius:50%}.dr{background:#e06060}.dy{background:#d4a03a}.dg{background:#4a9e6a}
+.t-title{font-size:12px;color:rgba(160,180,210,0.5);margin-left:6px;font-family:monospace}
+.t-body{padding:18px 20px;font-size:13.5px;line-height:1.8;color:#a8c0dd;font-family:'Courier New',monospace}
+.t-body .p{color:#4fa3e8;margin-right:8px}.t-body strong{color:#e8eaf2;font-weight:500}.t-body .hi{color:#7ec8f4}
+.cursor{display:inline-block;width:2px;height:13px;background:#4fa3e8;margin-left:2px;vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.cta-row{display:flex;align-items:center;gap:12px}
+.cta-p{background:#2563a8;color:#e8f4ff;border:none;padding:12px 28px;border-radius:40px;font-size:15px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s}.cta-p:hover{background:#1a4e8a}
+.cta-ic{width:42px;height:42px;border-radius:50%;background:transparent;border:0.5px solid rgba(100,160,240,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(160,190,220,0.8);font-size:15px;transition:all 0.2s}.cta-ic:hover{border-color:rgba(100,160,240,0.7);color:#e8eaf2}
+.av-wrap{width:270px;height:270px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#1a3a6e,#050d1a 70%);display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(79,163,232,0.2)}
+.av-inner{width:250px;height:250px;border-radius:50%;background:linear-gradient(140deg,#0e2244,#0a1628);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:68px;font-weight:900;color:#4fa3e8}
+.badge-strip{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;justify-content:center}
+.badge{background:rgba(37,99,168,0.18);border:0.5px solid rgba(79,163,232,0.25);color:#7ec8f4;font-size:11px;font-weight:500;padding:4px 12px;border-radius:30px;letter-spacing:0.4px}
+
+/* ABOUT CARDS */
+#about{background:rgba(255,255,255,0.015)}
+.card-deck{display:flex;justify-content:center;align-items:flex-end;height:420px;position:relative;cursor:pointer}
+.about-card{position:absolute;width:230px;height:340px;border-radius:20px;display:flex;flex-direction:column;padding:24px 20px;transition:transform 0.6s cubic-bezier(.34,1.56,.64,1),opacity 0.4s}
+.ac-icon{font-size:28px;margin-bottom:10px}
+.ac-label{font-size:10px;font-weight:700;letter-spacing:2px;opacity:0.8;margin-bottom:8px;text-transform:uppercase}
+.ac-title{font-size:22px;font-weight:700;font-family:'Playfair Display',serif;margin-bottom:10px;line-height:1.2}
+.ac-body{font-size:13px;line-height:1.65;opacity:0.85}
+.ac-tag{display:inline-block;background:rgba(255,255,255,0.2);border-radius:30px;padding:4px 10px;font-size:11px;font-weight:500;margin:3px 3px 0 0}
+.card-c0{background:linear-gradient(145deg,#e05555,#c0392b);color:#fff}
+.card-c1{background:linear-gradient(145deg,#e8a230,#c47a10);color:#fff}
+.card-c2{background:linear-gradient(145deg,#7c6fd4,#5a4ab8);color:#fff}
+.card-c3{background:linear-gradient(145deg,#2563a8,#1a3a6e);color:#fff}
+.spread-btn{position:absolute;top:20px;right:20px;background:#2563a8;color:#fff;border:none;padding:9px 18px;border-radius:30px;font-size:13px;font-weight:500;cursor:pointer;z-index:20;transition:all 0.2s}
+.spread-btn:hover{background:#1a4e8a}
+
+/* SKILLS */
+#skills{background:rgba(255,255,255,0.018)}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:900px;margin:0 auto}
+.skills-col-title{font-size:13px;font-weight:600;letter-spacing:1.5px;color:#4fa3e8;text-transform:uppercase;margin-bottom:20px}
+.skill-item{margin-bottom:18px}
+.skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.skill-name{font-size:14px;color:#c8d8ee;font-weight:400}
+.skill-pct{font-size:12px;color:#4fa3e8;font-weight:500}
+.skill-bar{height:5px;background:rgba(79,163,232,0.12);border-radius:4px;overflow:hidden}
+.skill-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#2563a8,#7c6fd4);transition:width 1.2s ease}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:620px;margin:0 auto 0}
+.tech-tile{background:#0d1f35;border:0.5px solid rgba(79,163,232,0.14);border-radius:10px;padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:7px;transition:border-color 0.2s,transform 0.2s;cursor:default}
+.tech-tile:hover{border-color:rgba(79,163,232,0.45);transform:translateY(-3px)}
+.tech-icon{font-size:22px}
+.tech-label{font-size:10px;color:rgba(160,185,215,0.65);font-weight:500;text-align:center;letter-spacing:0.3px}
+
+/* EDUCATION TIMELINE */
+#education{background:rgba(255,255,255,0.015)}
+.edu-timeline{display:flex;flex-direction:column;gap:0;max-width:700px;margin:0 auto;position:relative}
+.edu-timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1.5px;background:linear-gradient(180deg,#2563a8,#7c6fd4)}
+.edu-item{display:flex;gap:28px;padding-bottom:40px;position:relative;padding-left:0}
+.edu-dot{width:42px;height:42px;min-width:42px;border-radius:50%;background:#0d1f35;border:2px solid #2563a8;display:flex;align-items:center;justify-content:center;font-size:16px;position:relative;z-index:2}
+.edu-card{background:#0d1f35;border:0.5px solid rgba(79,163,232,0.15);border-radius:14px;padding:20px 22px;flex:1}
+.edu-badge{display:inline-flex;gap:6px;margin-bottom:10px}
+.edu-tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:rgba(37,99,168,0.25);color:#7ec8f4;border:0.5px solid rgba(79,163,232,0.3)}
+.edu-done{background:rgba(74,158,106,0.2);color:#5ec98a;border-color:rgba(74,158,106,0.35)}
+.edu-title{font-size:17px;font-weight:600;color:#e8eaf2;margin-bottom:3px}
+.edu-org{font-size:14px;color:#4fa3e8;margin-bottom:10px}
+.edu-meta{display:flex;gap:16px;font-size:12.5px;color:rgba(160,185,215,0.6);margin-bottom:12px}
+.edu-desc{font-size:13.5px;color:rgba(160,185,215,0.75);line-height:1.7}
+
+/* EXPERIENCE */
+#experience{background:rgba(255,255,255,0.018)}
+.exp-wrap{display:grid;grid-template-columns:1fr 2fr;gap:0;max-width:860px;margin:0 auto;position:relative}
+.exp-line{position:absolute;left:calc(50%/3 * 1.1);top:0;bottom:0;width:1.5px;background:linear-gradient(180deg,#2563a8,#7c6fd4);z-index:1}
+.exp-dot-wrap{display:flex;flex-direction:column;align-items:flex-end;padding-right:32px;padding-top:14px;z-index:2}
+.exp-dot{width:14px;height:14px;border-radius:50%;background:#2563a8;border:2.5px solid #7ec8f4;box-shadow:0 0 12px rgba(79,163,232,0.5)}
+.exp-card{background:#0d1f35;border:0.5px solid rgba(79,163,232,0.15);border-radius:16px;padding:26px 26px}
+.exp-badges{display:flex;gap:8px;margin-bottom:12px}
+.exp-tag{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:rgba(37,99,168,0.25);color:#7ec8f4;border:0.5px solid rgba(79,163,232,0.3)}
+.exp-active{background:rgba(74,158,106,0.2);color:#5ec98a;border-color:rgba(74,158,106,0.35)}
+.exp-title{font-size:20px;font-weight:700;color:#e8eaf2;margin-bottom:3px;font-family:'Playfair Display',serif}
+.exp-org{font-size:14px;color:#4fa3e8;font-weight:500;margin-bottom:12px}
+.exp-meta{display:flex;gap:18px;font-size:12.5px;color:rgba(160,185,215,0.6);margin-bottom:16px}
+.exp-desc{font-size:14px;color:rgba(160,185,215,0.75);line-height:1.75;margin-bottom:16px}
+.exp-list{display:flex;flex-direction:column;gap:8px}
+.exp-li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(160,185,215,0.8)}
+.exp-arrow{color:#4fa3e8;margin-top:2px;min-width:14px}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
+.proj-card{background:#0d1f35;border:0.5px solid rgba(79,163,232,0.15);border-radius:16px;padding:26px 24px;transition:border-color 0.2s,transform 0.2s}
+.proj-card:hover{border-color:rgba(79,163,232,0.4);transform:translateY(-4px)}
+.proj-icon{font-size:28px;margin-bottom:12px}
+.proj-title{font-size:18px;font-weight:700;color:#e8eaf2;margin-bottom:8px;font-family:'Playfair Display',serif}
+.proj-desc{font-size:13.5px;color:rgba(160,185,215,0.75);line-height:1.7;margin-bottom:16px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:7px}
+.proj-tag{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(37,99,168,0.2);color:#7ec8f4;border:0.5px solid rgba(79,163,232,0.25)}
+
+/* ACHIEVEMENTS */
+#achievements{background:rgba(255,255,255,0.015)}
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:700px;margin:0 auto}
+.ach-card{background:#0d1f35;border:0.5px solid rgba(79,163,232,0.15);border-radius:14px;padding:22px 20px;display:flex;gap:16px;align-items:flex-start}
+.ach-icon-wrap{width:46px;height:46px;min-width:46px;border-radius:12px;background:rgba(37,99,168,0.2);display:flex;align-items:center;justify-content:center;font-size:20px}
+.ach-title{font-size:16px;font-weight:600;color:#e8eaf2;margin-bottom:5px}
+.ach-desc{font-size:13px;color:rgba(160,185,215,0.7);line-height:1.6}
+
+/* CONTACT */
+#contact{background:rgba(255,255,255,0.018)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;max-width:720px;margin:0 auto 40px}
+.contact-card{background:#0d1f35;border:0.5px solid rgba(79,163,232,0.15);border-radius:14px;padding:24px 20px;text-align:center;transition:border-color 0.2s}
+.contact-card:hover{border-color:rgba(79,163,232,0.4)}
+.contact-icon{font-size:26px;margin-bottom:10px}
+.contact-label{font-size:11px;color:rgba(160,185,215,0.55);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.contact-val{font-size:14px;color:#c8d8ee;font-weight:500;word-break:break-all}
+.philosophy-box{max-width:600px;margin:0 auto;background:linear-gradient(135deg,rgba(37,99,168,0.2),rgba(124,111,212,0.15));border:0.5px solid rgba(79,163,232,0.2);border-radius:16px;padding:32px 36px;text-align:center}
+.philosophy-quote{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#e8eaf2;line-height:1.6;margin-bottom:12px}
+.philosophy-sub{font-size:13.5px;color:rgba(160,185,215,0.65);line-height:1.7}
+
+/* FOOTER */
+footer{text-align:center;padding:26px 48px;border-top:0.5px solid rgba(100,160,240,0.08);font-size:13px;color:rgba(160,185,215,0.4);position:relative;z-index:5}
+</style>
+
+<div class="stars" id="stars"></div>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-av">MT</div>
+    <span class="nav-brand">M<span>.</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    
+  </ul>
+  <button class="hire-btn"><a href="#contact">Connect</a></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:70px;">
+  <div>
+    <p class="hero-greeting">Hi, I'm <strong>Manju</strong></p>
+    <h1 class="hero-h1">CS Educator<br>&amp; Mentor</h1>
+    <p class="hero-sub">Bridging theory and practice — teaching Programming, DSA, DBMS &amp; Web Technologies with a passion for student-centered learning.</p>
+    <div class="terminal">
+      <div class="t-bar">
+        <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+        <span class="t-title">About.jsx</span>
+      </div>
+      <div class="t-body">
+        <span class="p">&gt;</span> <strong>Assistant Professor</strong> — CS &amp; Applications<br>
+        <span class="p">&gt;</span> <span class="hi">UGC-NET Qualified</span> in Computer Science<br>
+        <span class="p">&gt;</span> <strong>BCA</strong> (2020–2023) · <strong>MCA</strong> (2023–2025)<br>
+        <span class="p">&gt;</span> Practical pedagogy · Mentoring · Curriculum Design<span class="cursor"></span>
+      </div>
+    </div>
+    <div class="cta-row">
+      <button class="cta-p">Let's Connect</button>
+      <div class="cta-ic">↓</div>
+      <div class="cta-ic">{ }</div>
+      <div class="cta-ic">in</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="av-wrap"><div class="av-inner"><image src="https://tse4.mm.bing.net/th/id/OIP.PEqTRCbXHFfiwIs-t0AEZQAAAA?pid=Api&P=0&h=180" alt="Manju Sehwag"></image></div></div>
+    <div class="badge-strip">
+      <span class="badge">UGC-NET</span>
+      <span class="badge">Educator</span>
+      <span class="badge">Mentor</span>
+      <span class="badge">Full-Stack</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">Overview</div>
+  <h2 class="sec-title">About <span>Me</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Tap the deck to reveal my story, achievements, skills &amp; status.</p>
+  <div style="position:relative;display:flex;justify-content:center;align-items:center;height:420px" id="deckWrap">
+    <button class="spread-btn" id="spreadBtn">✦ Click to Spread</button>
+    <div class="about-card card-c0" id="ac0" style="transform:rotate(-18deg) translateX(-140px) translateY(20px);z-index:1">
+      <span class="ac-icon">💻</span>
+      <div class="ac-label">Builder</div>
+      <div class="ac-title">Projects &amp; Tech</div>
+      <div class="ac-body">Hotel Management System · E-commerce Platform<br><br>
+        <span class="ac-tag">Python</span><span class="ac-tag">C</span><span class="ac-tag">HTML/CSS</span><span class="ac-tag">MySQL</span>
+      </div>
+    </div>
+    <div class="about-card card-c1" id="ac1" style="transform:rotate(-8deg) translateX(-60px) translateY(10px);z-index:2">
+      <span class="ac-icon">🧑‍🏫</span>
+      <div class="ac-label">Teacher</div>
+      <div class="ac-title">Shaping Minds</div>
+      <div class="ac-body">Assistant Prof at Ganga Institute of Tech &amp; Mgmt, Jhajjar.<br><br>Lectures · Lab sessions · Mentoring · Assessments</div>
+    </div>
+    <div class="about-card card-c2" id="ac2" style="transform:rotate(4deg) translateX(30px) translateY(5px);z-index:3">
+      <span class="ac-icon">🏆</span>
+      <div class="ac-label">Achiever</div>
+      <div class="ac-title">Milestones</div>
+      <div class="ac-body">
+        <span class="ac-tag">UGC-NET Qualified</span>
+        <span class="ac-tag">1st Inter-College Tech Day</span>
+        <span class="ac-tag">MCA 2023–25</span>
+      </div>
+    </div>
+    <div class="about-card card-c3" id="ac3" style="transform:rotate(14deg) translateX(120px) translateY(15px);z-index:4">
+      <span class="ac-icon">📍</span>
+      <div class="ac-label">Status</div>
+      <div class="ac-title">Open to<br>Opportunities</div>
+      <div class="ac-body">
+        <span class="ac-tag">Teaching Roles</span>
+        <span class="ac-tag">Research</span>
+        <br><br>Sonipat, Haryana<br>Available for collaborations &amp; academic roles.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-label">Arsenal</div>
+  <h2 class="sec-title">My <span>Skills</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Technical proficiency meets soft skill mastery — the complete toolkit.</p>
+  <div class="skills-grid" style="margin-bottom:48px">
+    <div>
+      <div class="skills-col-title">Technical Skills</div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Programming Fundamentals &amp; DSA</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">DBMS &amp; SQL</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-w="85" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Web Technologies (HTML/CSS/JS)</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" data-w="82" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Python &amp; C Programming</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">MS Office Suite</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-w="88" style="width:0%"></div></div></div>
+    </div>
+    <div>
+      <div class="skills-col-title">Soft Skills</div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Teaching &amp; Presentation</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" data-w="95" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Curriculum Development</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-w="88" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Student Mentoring</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" data-w="92" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Classroom Management</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90" style="width:0%"></div></div></div>
+      <div class="skill-item"><div class="skill-row"><span class="skill-name">Communication Skills</span><span class="skill-pct">93%</span></div><div class="skill-bar"><div class="skill-fill" data-w="93" style="width:0%"></div></div></div>
+    </div>
+  </div>
+  <div class="sec-label" style="margin-bottom:22px">Tech Stack</div>
+  <div class="tech-grid">
+    <div class="tech-tile"><span class="tech-icon">🐍</span><span class="tech-label">Python</span></div>
+    <div class="tech-tile"><span class="tech-icon" style="font-family:monospace;font-size:18px;font-weight:700;color:#4fa3e8">C</span><span class="tech-label">C Lang</span></div>
+    <div class="tech-tile"><span class="tech-icon">🌐</span><span class="tech-label">HTML5</span></div>
+    <div class="tech-tile"><span class="tech-icon">🎨</span><span class="tech-label">CSS3</span></div>
+    <div class="tech-tile"><span class="tech-icon" style="font-family:monospace;font-size:16px;font-weight:700;color:#f0db4f">JS</span><span class="tech-label">JavaScript</span></div>
+    <div class="tech-tile"><span class="tech-icon">🗄️</span><span class="tech-label">MySQL</span></div>
+    <div class="tech-tile"><span class="tech-icon">📊</span><span class="tech-label">DBMS</span></div>
+    <div class="tech-tile"><span class="tech-icon">📐</span><span class="tech-label">DSA</span></div>
+    <div class="tech-tile"><span class="tech-icon">📝</span><span class="tech-label">MS Office</span></div>
+    <div class="tech-tile"><span class="tech-icon">🔗</span><span class="tech-label">Git</span></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-label">Academic Journey</div>
+  <h2 class="sec-title">My <span>Education</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">A strong academic foundation in computer science, capped by national-level qualification.</p>
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-dot">🎓</div>
+      <div class="edu-card">
+        <div class="edu-badge"><span class="edu-tag">Post-Graduate</span><span class="edu-tag edu-done">Completed</span></div>
+        <div class="edu-title">Master of Computer Applications (MCA)</div>
+        <div class="edu-org">University · Haryana</div>
+        <div class="edu-meta"><span>📅 2023 – 2025</span><span>📍 Haryana</span></div>
+        <div class="edu-desc">Advanced coursework in software engineering, database systems, AI fundamentals, and full-stack development. Developed strong research and teaching aptitude.</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-dot">🎓</div>
+      <div class="edu-card">
+        <div class="edu-badge"><span class="edu-tag">Under-Graduate</span><span class="edu-tag edu-done">Completed</span></div>
+        <div class="edu-title">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-org">All India Jat Heroes' Memorial College, Rohtak</div>
+        <div class="edu-meta"><span>📅 2020 – 2023</span><span>📍 Rohtak, Haryana</span></div>
+        <div class="edu-desc">Core studies in programming, data structures, web technologies, DBMS and computer networks. Built a solid foundation for academic and professional growth.</div>
+      </div>
+    </div>
+    <div class="edu-item" style="padding-bottom:0">
+      <div class="edu-dot">🏅</div>
+      <div class="edu-card" style="border-color:rgba(126,200,244,0.3)">
+        <div class="edu-badge"><span class="edu-tag" style="background:rgba(74,158,106,0.2);color:#5ec98a;border-color:rgba(74,158,106,0.35)">National Qualification</span></div>
+        <div class="edu-title">UGC-NET — Computer Science &amp; Applications</div>
+        <div class="edu-org">University Grants Commission</div>
+        <div class="edu-meta"><span>📅 Qualified</span><span>📍 All India</span></div>
+        <div class="edu-desc">Cleared the national-level eligibility test for Assistant Professorship, demonstrating mastery in core computer science subjects and research aptitude.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-label">Experience</div>
+  <h2 class="sec-title">Work <span>Experience</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Hands-on academic experience shaping the next generation of technologists.</p>
+  <div class="exp-wrap">
+    <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+    <div class="exp-line"></div>
+    <div class="exp-card">
+      <div class="exp-badges">
+        <span class="exp-tag">Teaching Role</span>
+        <span class="exp-tag exp-active">Active</span>
+      </div>
+      <div class="exp-title">Assistant Professor</div>
+      <div class="exp-org">Ganga Institute of Technology and Management, Jhajjar</div>
+      <div class="exp-meta"><span>📅 2025 – Present</span><span>📍 Jhajjar, Haryana</span></div>
+      <div class="exp-desc">Engaged in delivering high-quality instruction in Computer Science, mentoring students, and contributing to the academic environment through curriculum development and assessments.</div>
+      <div class="exp-list">
+        <div class="exp-li"><span class="exp-arrow">›</span><span>Delivering lectures and hands-on lab sessions in CS subjects</span></div>
+        <div class="exp-li"><span class="exp-arrow">›</span><span>Preparing course materials, question papers, and assessments</span></div>
+        <div class="exp-li"><span class="exp-arrow">›</span><span>Mentoring students and guiding final-year projects</span></div>
+        <div class="exp-li"><span class="exp-arrow">›</span><span>Evaluating academic performance and maintaining records</span></div>
+        <div class="exp-li"><span class="exp-arrow">›</span><span>Contributing to curriculum planning and departmental activities</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-label">Work</div>
+  <h2 class="sec-title">My <span>Projects</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Academic and personal projects showcasing applied programming skills.</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-icon">🏨</div>
+      <div class="proj-title">Hotel Management System</div>
+      <div class="proj-desc">A modular desktop application for managing hotel operations including room booking, check-in/check-out, billing, and data handling. Built with structured programming principles.</div>
+      <div class="proj-tags"><span class="proj-tag">C Programming</span><span class="proj-tag">File Handling</span><span class="proj-tag">Modular Design</span><span class="proj-tag">DBMS Concepts</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">🛒</div>
+      <div class="proj-title">E-Commerce Platform</div>
+      <div class="proj-desc">A structured e-commerce web application featuring product listings, cart workflow, UI design, and user-friendly navigation. Emphasis on clean UI and well-structured programming logic.</div>
+      <div class="proj-tags"><span class="proj-tag">HTML/CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">UI Design</span><span class="proj-tag">Structured Programming</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" style="padding-bottom:60px">
+  <div class="sec-label">Recognition</div>
+  <h2 class="sec-title">My <span>Achievements</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Milestones earned through dedication, expertise, and competitive spirit.</p>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <div class="ach-icon-wrap">🏅</div>
+      <div><div class="ach-title">UGC-NET Qualified</div><div class="ach-desc">Cleared the national-level eligibility test for Assistant Professorship in Computer Science &amp; Applications — issued by University Grants Commission.</div></div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon-wrap">🥇</div>
+      <div><div class="ach-title">1st Position — Inter-College Tech Day</div><div class="ach-desc">Secured first place in the Inter-College Technology Day Competition, demonstrating exceptional technical skills and innovative problem-solving.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label">Contact</div>
+  <h2 class="sec-title">Get In <span>Touch</span></h2>
+  <div class="sec-divider"></div>
+  <p class="sec-sub">Whether it's a teaching opportunity, collaboration, or just a hello — I'm happy to connect.</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">🖇️</div>
+      <div class="contact-label">LinkedIn</div>
+      <div class="contact-val"><a href="https://www.linkedin.com/in/manju-sehwag-4b96a63bb?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn Profile</a></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-label">Email</div>
+      <div class="contact-val">manjusehwag23@email.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">Location</div>
+      <div class="contact-val">Sonipat, Haryana</div>
+    </div>
+  </div>
+  <div class="philosophy-box">
+    <div class="philosophy-quote">"Education is not filling a bucket, but lighting a fire."</div>
+    <div class="philosophy-sub">My teaching philosophy centers on interactive learning, practical exposure, real-world problem solving, and empowering every student to discover their potential.</div>
+  </div>
+</section>
+
+<footer>Designed with ♥ &nbsp;·&nbsp; Manju · CS Educator &amp; Mentor · Sonipat, Haryana</footer>
+
+<script>
+const starsEl = document.getElementById('stars');
+for(let i=0;i<100;i++){
+  const s=document.createElement('div');s.className='star';
+  s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=Math.random()*4+'s';s.style.opacity=(Math.random()*0.5+0.1).toString();
+  starsEl.appendChild(s);
+}
+
+let spread=false;
+const btn=document.getElementById('spreadBtn');
+const cards=[document.getElementById('ac0'),document.getElementById('ac1'),document.getElementById('ac2'),document.getElementById('ac3')];
+const stacked=[
+  'rotate(-18deg) translateX(-140px) translateY(20px)',
+  'rotate(-8deg) translateX(-60px) translateY(10px)',
+  'rotate(4deg) translateX(30px) translateY(5px)',
+  'rotate(14deg) translateX(120px) translateY(15px)'
+];
+const spreadOut=[
+  'rotate(-5deg) translateX(-310px) translateY(-20px)',
+  'rotate(-2deg) translateX(-100px) translateY(-30px)',
+  'rotate(2deg) translateX(110px) translateY(-30px)',
+  'rotate(5deg) translateX(310px) translateY(-20px)'
+];
+btn.addEventListener('click',()=>{
+  spread=!spread;
+  cards.forEach((c,i)=>{
+    c.style.transform=spread?spreadOut[i]:stacked[i];
+    c.style.zIndex=spread?i+1:(4-i);
+  });
+  btn.textContent=spread?'✦ Stack Back':'✦ Click to Spread';
+});
+
+const fills=document.querySelectorAll('.skill-fill');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      fills.forEach(f=>{f.style.width=f.getAttribute('data-w')+'%'});
+      observer.disconnect();
+    }
+  });
+},{threshold:0.3});
+const skillSec=document.getElementById('skills');
+if(skillSec)observer.observe(skillSec);
+</script>
